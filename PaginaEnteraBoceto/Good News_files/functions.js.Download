@@ -1,0 +1,173 @@
+/**
+ * Theme functions file
+ *
+ */
+
+
+// Mobile Menu.
+jQuery(document).ready(function() {
+    jQuery('#mobile-menu-wrap').hide();
+    jQuery('a#mobile-menu-toggle').click(function() {
+        jQuery('#mobile-menu-wrap').slideToggle('600');
+    });
+});
+
+
+jQuery(document).ready(function() {
+    jQuery('a#mobile-menu-close').click(function() {
+        jQuery('#mobile-menu-wrap').slideToggle('600');
+    });
+});
+
+
+// Archive Header Area Menu.
+jQuery(document).ready(function() {
+    jQuery('.archive-menu-content').hide();
+    jQuery('a.archive-menu-toggle').click(function() {
+        jQuery('.archive-menu-content').slideToggle('600');
+        jQuery('a.archive-menu-toggle').toggleClass('archive-open');
+    });
+});
+
+
+jQuery(document).ready(function() {
+    jQuery('a.archive-menu-close').click(function() {
+        jQuery('.archive-menu-content').slideToggle('600');
+        jQuery('a.archive-menu-toggle').removeClass('archive-open');
+    });
+
+    jQuery('.flexslider').flexslider({
+        animation: "slide", //String: Select your animation type, "fade" or "slide"
+        slideshow: typeof slideshow_status !== 'undefined' ? slideshow_status : true, //Boolean: Animate slider automatically
+        startAt: 1, //Integer: The slide that the slider should start on. Array notation (0 = first slide)
+        prevText: "<span>Previous</span>", //String: Set the text for the "previous" directionNav item
+        nextText: "<span>Next</span>",
+        touch: false //{NEW} Boolean: Allow touch swipe navigation of the slider on touch-enabled devices
+    });
+
+    jQuery("#header-main-nav").mmenu({
+        extensions: ["position-front"],
+        "navbars": [{
+            "position": "bottom",
+            "content": [
+                '<a href="' + url_de + '">de</a>',
+                '<a href="' + url_en + '">en</a>',
+            ]
+        }]
+    }, {
+        clone: true
+    });
+
+    jQuery('.eq_h').matchHeight();
+
+    fix_summary_next_area();
+    fix_summaries_front_page();
+    // fix_summaries_news_page();
+});
+
+
+// Scalable Videos (more info see: fitvidsjs.com).
+jQuery(document).ready(function() {
+    jQuery('#primary').fitVids();
+});
+
+
+// Initialize Featured Content slider.
+jQuery(window).load(function() {
+    fix_summary_next_area();
+    fix_summaries_front_page();
+    // fix_summaries_news_page();
+});
+
+
+jQuery(window).on('resize', function() {
+    fix_summary_next_area();
+    fix_summaries_front_page();
+    // fix_summaries_news_page();
+});
+
+
+jQuery.fn.toggleClick = function () {
+    var functions = arguments
+    return this.each(function () {
+        var iteration = 0
+        jQuery(this).click(function () {
+            functions[iteration].apply(this, arguments)
+            iteration = (iteration + 1) % functions.length
+        })
+    })
+}
+
+// Header Search (Desktop only).
+if (document.documentElement.clientWidth > 1200) {
+    jQuery(document).ready(function() {
+        jQuery("a#ico-search-toggle").toggleClick(function() {
+            jQuery('#searchform').animate({
+                width: 'show',
+                opacity: 'show'
+            }, 'fast');
+            jQuery('a#ico-search-toggle').addClass('btn-open');
+        }, function() {
+            jQuery('#searchform').animate({
+                width: 'hide',
+                opacity: 'hide'
+            }, 'fast');
+            jQuery('a#ico-search-toggle').removeClass('btn-open');
+        });
+    });
+}
+
+
+function fix_summary_next_area() {
+    if (typeof jQuery("#entry_info .row .col_r.next .content_next_int p.summary").dotdotdot({}).data("dotdotdot") != "undefined") {
+        jQuery("#entry_info .row .col_r.next .content_next_int p.summary").dotdotdot({}).data("dotdotdot").restore();
+    }
+
+    var area_next_height = jQuery("#entry_info .col_r.next .content_next_int .wrapper").height();
+    var area_next_parent_height = jQuery("#entry_info .col_r.next .content_next_int").height();
+    var area_next_summary_height = jQuery("#entry_info .col_r.next .content_next_int p.summary").height();
+
+    if (area_next_height > area_next_parent_height) {
+        jQuery("#entry_info .row .col_r.next .content_next_int p.summary").dotdotdot({
+            height: area_next_summary_height - (area_next_height - area_next_parent_height)
+        });
+    }
+}
+
+
+function fix_summaries_front_page() {
+    jQuery('#front-content-one .rp-big-one').each(function(index, element) {
+	    if (typeof jQuery(this).find("p.summary").dotdotdot({}).data("dotdotdot") != "undefined") {
+	        jQuery(this).find("p.summary").dotdotdot({}).data("dotdotdot").restore();
+	    }
+
+        var story_height = jQuery(this).find(".story").height();
+        var story_int_height = jQuery(this).find(".story_int").height();
+        var story_summary_height = jQuery(this).find("p.summary").height();
+
+        if (story_int_height > story_height) {
+            jQuery(this).find("p.summary").dotdotdot({
+                height: story_summary_height - (story_int_height - story_height) - 30
+            });
+        }
+    });
+}
+
+
+function fix_summaries_news_page() {
+    jQuery('article.news_post').each(function(index, element) {
+        if (typeof jQuery(this).find("p.summary").dotdotdot({}).data("dotdotdot") != "undefined") {
+            jQuery(this).find("p.summary").dotdotdot({}).data("dotdotdot").restore();
+        }
+
+        var story_height = jQuery(this).find(".news_post_details_content").height();
+        var story_int_height = jQuery(this).find(".news_post_details_content_int").height();
+        var story_summary_height = jQuery(this).find("p.summary").height();
+
+        if (story_int_height > story_height) {
+            jQuery(this).find("p.summary").dotdotdot({
+                height: story_summary_height - (story_int_height - story_height) - 10
+            });
+        }
+    });
+}
