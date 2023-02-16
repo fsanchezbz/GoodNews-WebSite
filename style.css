@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  left: 80px;
+  top: 10%;
+  width: 100%;
+  text-align: left;
+  font-size: 20px;
+}
+.center2 {
+  position: absolute;
+  left: 1100px;
+  top: 10%;
+  width: 20%;
+  text-align: left;
+  font-size: 25px;
+  background-color: #eefafa;
+}
+
+img { 
+  width: 95%;
+  height: auto;
+  opacity: 100;
+}
+
+
