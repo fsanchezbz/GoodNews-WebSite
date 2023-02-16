@@ -1,0 +1,27 @@
+
+
+
+.articles{
+    width: 80%;
+    /*flex-direction: row;*/
+    display: flex;
+    /*justify-content: flex-start;*/
+    flex-wrap: wrap;
+
+}
+
+.article{
+    width: 40%;
+    padding: 1%;
+    
+}
+
+.article-img{
+   width: 100%;
+  
+}
+
+.article-header{
+   font-weight: bold;
+}
+
