@@ -1,19 +1,23 @@
 
 
+html{
+  width: 80%;
+}
 
+
+
+/*----------------- ARTICLES VITALI -------------*/
 .articles{
     width: 80%;
     /*flex-direction: row;*/
     display: flex;
     /*justify-content: flex-start;*/
     flex-wrap: wrap;
-
 }
 
 .article{
     width: 40%;
     padding: 1%;
-    
 }
 
 .article-img{
@@ -24,4 +28,87 @@
 .article-header{
    font-weight: bold;
 }
+
+/*----------------- ARTICLES VITALI -------------*/
+
+
+
+
+/*-------------------ARNAUD----------------------------*/
+.container {
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  left: 80px;
+  top: 10%;
+  width: 100%;
+  text-align: left;
+  font-size: 20px;
+}
+.center2 {
+  position: absolute;
+  left: 1100px;
+  top: 10%;
+  width: 20%;
+  text-align: left;
+  font-size: 25px;
+  background-color: #eefafa;
+}
+
+.container img { 
+  width: 95%;
+  height: auto;
+  opacity: 100;
+}
+/*------------------ARNAUD-------------------------------*/
+
+
+
+/*------FOOTER------------FOOTER----------*/
+.upper {
+  display: flex;
+  justify-content:space-between;
+  align-items: baseline;
+  border-top:2px solid #d1caca;
+  border-bottom:2px solid #d1caca;
+  
+}
+
+.left-upper img {
+   width: 150px;
+   border-right:2px solid #d1caca;
+  
+}
+  
+#socialmedia li {
+  display: inline;
+  
+}
+
+#socialmedia li img {
+  width: 20px; height: 20px;
+  cursor:pointer;
+  margin-right: 5px;
+}
+
+.lower ul{
+  list-style-type: none;
+}
+
+
+.lower {
+  display:flex;
+  align-items: flex-start;
+  list-style-type: none;
+
+  }
+
+  .lower a{
+      color: rgb(116, 113, 113);
+      text-decoration: none;
+  }
+   
+/*------FOOTER------------FOOTER----------*/
 
