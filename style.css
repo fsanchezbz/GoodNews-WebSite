@@ -1,6 +1,37 @@
+
+
 html{
-  max-width: 50%;
+  width: 80%;
 }
+
+
+
+/*----------------- ARTICLES VITALI -------------*/
+.articles{
+    width: 80%;
+    /*flex-direction: row;*/
+    display: flex;
+    /*justify-content: flex-start;*/
+    flex-wrap: wrap;
+}
+
+.article{
+    width: 40%;
+    padding: 1%;
+}
+
+.article-img{
+   width: 100%;
+  
+}
+
+.article-header{
+   font-weight: bold;
+}
+
+/*----------------- ARTICLES VITALI -------------*/
+
+
 
 
 /*-------------------ARNAUD----------------------------*/
@@ -26,7 +57,7 @@ html{
   background-color: #eefafa;
 }
 
-img { 
+.container img { 
   width: 95%;
   height: auto;
   opacity: 100;
@@ -78,6 +109,6 @@ img {
       color: rgb(116, 113, 113);
       text-decoration: none;
   }
-      
    
 /*------FOOTER------------FOOTER----------*/
+
